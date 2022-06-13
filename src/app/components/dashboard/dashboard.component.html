@@ -1,0 +1,66 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <img class="brand-logo" src="assets/LOGO_UPF.jpg" style="width: 55px;height: auto;margin: 0;padding: 0">
+</nav>
+
+<!-- Sidebar navigation -->
+<div class="container-fluid">
+  <div class="row">
+
+    <nav class="col-md-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/dashboard">
+              <i class="fas fa-user"></i>User Profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/create">
+              Create Post
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/list-posts">
+              Forum
+            </a>
+          </li>
+
+
+          <!-- Calling SignOut() Api from AuthService -->
+          <li class="nav-item">
+            <a class="nav-link" (click)="authService.SignOut()">
+              <i class="fas fa-sign-out-alt"></i>Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="inner-adjust">
+
+        <div class="pt-3 pb-2 mb-3 border-bottom">
+          <h2 style="color:#b0107c; text-align: center">User profile</h2>
+        </div>
+        <!-- Show user data when logged in -->
+        <div style="text-align: center" class="row" *ngIf="authService.userData as user">
+          <div class="col-md-12">
+            <div class="media">
+              <img style="width: 17%;height: auto" class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+                alt="{{user.displayName}}">
+              <div class="media-body">
+                <h1>Hello: <strong style="color: #b0107c">{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+                <h3 style="color: #12056d">Email: {{user.email}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+</div>

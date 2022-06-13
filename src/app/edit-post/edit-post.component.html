@@ -1,0 +1,73 @@
+
+
+
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <img class="brand-logo" src="assets/LOGO_UPF.jpg" style="width: 55px;height: auto;margin: 0;padding: 0">
+</nav>
+
+<!-- Sidebar navigation -->
+<div class="container-fluid">
+  <div class="row">
+
+    <nav class="col-md-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/dashboard">
+              <i class="fas fa-user"></i>User Profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/create">
+              Create Post
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/list-posts">
+              Forum
+            </a>
+          </li>
+
+
+          <!-- Calling SignOut() Api from AuthService -->
+          <li class="nav-item">
+            <a class="nav-link" (click)="authService.SignOut()">
+              <i class="fas fa-sign-out-alt"></i>Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="inner-adjust">
+
+        <div class="pt-3 pb-2 mb-3 border-bottom">
+          <h2 style="color:#b0107c;text-align: center">Edit post</h2>
+        </div>
+        <!-- Show user data when logged in -->
+
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="mb-3">
+            <label>Title</label>
+            <input type="text" formControlName="title" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Content</label>
+            <input type="text" formControlName="message" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+
+      </div>
+    </main>
+
+  </div>
+</div>
